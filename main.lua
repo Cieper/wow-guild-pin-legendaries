@@ -8,12 +8,12 @@ gtlp_eventFrame:SetScript("OnEvent", function(self, event, ...)
 			if numNews then
 				local NEWS_LEGENDARY_LOOTED = 8;
 				for i = 1, numNews do
-					local isSticky, isHeader, newsType, text1, text2, id, data, data2, weekday, day, month, year = C_GuildInfo.GetGuildNewsInfo(i);
-					if newsType == NEWS_LEGENDARY_LOOTED then
-						if not isSticky then
-							GuildNewsSetSticky(i,1)
-						end
+					local newsInfo = C_GuildInfo.GetGuildNewsInfo(i);
+				if newsInfo and newsInfo.newsType == NEWS_LEGENDARY_LOOTED then
+					if not newsInfo.isSticky then
+						GuildNewsSetSticky(i, 1)
 					end
+				end
 				end
 			end
 		end
